@@ -10,7 +10,7 @@ const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB,
   synchronize: false,
-  entities: ["src/entities/*ts"],
+  entities: ["src/entities/*.ts"],
   migrations: ["src/migrations/*.ts"],
 });
 

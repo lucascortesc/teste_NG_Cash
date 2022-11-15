@@ -1,5 +1,11 @@
 import { Exclude } from "class-transformer";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Accounts } from "./accounts.entity";
 
 @Entity("users")
@@ -10,13 +16,15 @@ export class Users {
   @Column({ length: 128 })
   username: string;
 
-  @Column()
   @Exclude()
+  @Column()
   password: string;
 
   @OneToOne(() => Accounts, {
     eager: true,
     onDelete: "CASCADE",
+    nullable: false,
   })
+  @JoinColumn({ name: "accountId" })
   account: Accounts;
 }
