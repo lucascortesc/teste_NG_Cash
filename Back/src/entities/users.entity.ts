@@ -8,7 +8,7 @@ export class Users {
   id: string;
 
   @Column({ length: 128 })
-  name: string;
+  username: string;
 
   @Column()
   @Exclude()

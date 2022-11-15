@@ -5,22 +5,22 @@ import {
   CreateDateColumn,
   ManyToOne,
 } from "typeorm";
-import { Users } from "./users.entity";
+import { Accounts } from "./accounts.entity";
 
-@Entity("users")
-export class Accounts {
+@Entity("transactions")
+export class Transactions {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @ManyToOne(() => Accounts, {
     eager: true,
   })
-  debitedAccountId: Users;
+  debitedAccount: Accounts;
 
   @ManyToOne(() => Accounts, {
     eager: true,
   })
-  creditedAccountId: Users;
+  creditedAccount: Accounts;
 
   @Column()
   value: number;
