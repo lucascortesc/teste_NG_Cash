@@ -6,3 +6,8 @@ export interface IUserRequest {
 export interface IUserResponse extends IUserRequest {
   id: string;
 }
+
+export interface IAccount {
+  id: string;
+  balance: number;
+}

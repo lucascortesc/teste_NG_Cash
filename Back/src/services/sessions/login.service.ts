@@ -29,7 +29,7 @@ export const loginService = async ({
     },
     process.env.SECRET_KEY as string,
     {
-      expiresIn: 24,
+      expiresIn: "24h",
     }
   );
 
