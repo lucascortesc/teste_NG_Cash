@@ -1,15 +1,8 @@
 import { Exclude } from "class-transformer";
-import {
-  Column,
-  Entity,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  Unique,
-} from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Accounts } from "./accounts.entity";
 
 @Entity("users")
-@Unique(["email"])
 export class Users {
   @PrimaryGeneratedColumn("uuid")
   id: string;
