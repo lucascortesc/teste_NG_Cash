@@ -18,7 +18,7 @@ export const cashOutService = async (
   const targetUser = await userRepository.findOneBy({ username: target });
 
   if (!user) {
-    throw new AppError("Usuario não encontrado");
+    throw new AppError("Usuário não encontrado");
   }
 
   if (!targetUser) {
@@ -62,7 +62,7 @@ export const cashOutService = async (
     id: transaction.id,
     value: transaction.value,
     debitedAccount: transaction.debitedAccount.id,
-    creditedAccount: transaction.debitedAccount.id,
+    creditedAccount: transaction.creditedAccount.id,
     createdAt: transaction.createdAt.toString(),
   };
 

@@ -30,6 +30,7 @@ export const transactionRequestSchema = yup
       .max(128, "Seu username deve conter no máximo 128 caracteres"),
     value: yup
       .number()
+      .required("Valor é obrigatório")
       .positive("Valor não pode ser negativo")
       .min(1, "Valor não pode ser menor que 1"),
   })

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { cashOutService } from "../../services/accounts/cashOut.service";
+import { cashOutService } from "../../services/transactions/cashOut.service";
 
 export const cashOutController = async (
   req: Request,
