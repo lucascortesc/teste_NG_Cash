@@ -19,3 +19,18 @@ export const userRequestSchama = yup
       .matches(/^(?!.*\s).{0,}$/, "Sua senha não pode conter espaços"),
   })
   .noUnknown(true);
+
+export const transactionRequestSchema = yup
+  .object()
+  .shape({
+    username: yup
+      .string()
+      .required("username obrigatório")
+      .min(3, "Seu username deve conter no mínimo 3 caracteres")
+      .max(128, "Seu username deve conter no máximo 128 caracteres"),
+    value: yup
+      .number()
+      .positive("Valor não pode ser negativo")
+      .min(1, "Valor não pode ser menor que 1"),
+  })
+  .noUnknown(true);
