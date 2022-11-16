@@ -21,3 +21,11 @@ export interface ITransaction {
   creditedAccount: string;
   createdAt: string;
 }
+
+export interface ITransactionParams {
+  cashin?: string;
+  cashout?: string;
+  date?: string;
+  year?: string;
+  month?: string;
+}

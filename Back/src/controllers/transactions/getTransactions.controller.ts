@@ -6,8 +6,9 @@ export const getTransactionsController = async (
   res: Response
 ): Promise<Response> => {
   const userId = res.locals.jwt.id;
+  const params = req.query;
 
-  const transactions = await getTransactionsService(userId);
+  const transactions = await getTransactionsService(userId, params);
 
   return res.json(transactions);
 };
