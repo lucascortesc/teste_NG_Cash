@@ -1,23 +1,29 @@
 import styled from "styled-components";
+import background from "../../assets/backgroundLandingPage.png";
 
-export const Background = styled.div`
+export const WrapLimiter = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: black;
+`;
+
+export const Background = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1600px;
-  height: calc(100vh - 96px);
-  background-color: black;
+  height: 100vh;
+  background-image: url(${background});
+  background-size: cover;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0px 48px;
+  padding: 0px 56px;
 
   .main__title {
     color: white;

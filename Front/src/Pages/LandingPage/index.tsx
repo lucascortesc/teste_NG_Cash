@@ -1,4 +1,4 @@
-import { Background, Container } from "./styles";
+import { WrapLimiter, Container } from "./styles";
 import mainPhones from "../../assets/mainPhones.png";
 import { FiLogIn } from "react-icons/fi";
 import { RiUserAddLine } from "react-icons/ri";
@@ -12,7 +12,7 @@ export const LandingPage = () => {
   return (
     <>
       <Header />
-      <Background>
+      <WrapLimiter>
         <Container>
           <motion.div
             initial={{ opacity: 0, y: -100 }}
@@ -45,7 +45,7 @@ export const LandingPage = () => {
             />
           </motion.div>
         </Container>
-      </Background>
+      </WrapLimiter>
     </>
   );
 };

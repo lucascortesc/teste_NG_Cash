@@ -5,11 +5,14 @@ export const Container = styled.div`
   width: 100%;
   height: 96px;
 
-  padding: 0 32px;
+  padding: 0 56px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0);
 
   .header__widthLimiter {
     width: 100%;
