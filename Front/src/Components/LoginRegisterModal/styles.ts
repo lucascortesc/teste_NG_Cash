@@ -22,50 +22,68 @@ export const Background = styled.div`
   .userModal {
     width: 95%;
     max-width: 480px;
-    height: 95%;
-    max-height: 280px;
+    height: auto;
     background-color: white;
 
     padding: 12px 24px;
 
     border-radius: 16px;
+  }
 
-    overflow: auto;
+  .userModal__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: grey;
 
-    .userModal__header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    p {
       font-weight: bold;
-      color: grey;
-
-      p {
-        font-weight: bold;
-        color: black;
-        cursor: pointer;
-      }
+      color: black;
+      cursor: pointer;
     }
+  }
 
+  .userModal__header-icon {
+    height: 100px;
+    width: 100px;
+    left: calc(50% - 50px);
+    background-color: #cdcdcd;
+    color: grey;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -62px;
+    z-index: 10;
+
+    display: none;
+
+    svg {
+      width: 70%;
+      height: 70%;
+    }
+  }
+
+  .userModal__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .userModal__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  @media screen and (min-width: 420px) {
     .userModal__header-icon {
-      height: 100px;
-      width: 100px;
-      left: calc(50% - 50px);
-      background-color: #cdcdcd;
-      color: grey;
-      border-radius: 50%;
-      position: absolute;
-      margin-top: -62px;
-      z-index: 10;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
-      svg {
-        width: 70%;
-        height: 70%;
-      }
     }
   }
 `;
