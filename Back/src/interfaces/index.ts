@@ -14,6 +14,12 @@ export interface IAccount {
   balance: number;
 }
 
+export interface IRetrieveUser {
+  id: string;
+  username: string;
+  account: Accounts;
+}
+
 export interface ITransaction {
   id: string;
   value: number;
