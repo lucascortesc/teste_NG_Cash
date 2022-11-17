@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 1600px;
+  height: calc(100vh - 96px);
   background-color: black;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 32px 48px;
+  padding: 0px 48px;
 
   .main__title {
     color: white;
@@ -26,15 +34,6 @@ export const Background = styled.div`
     display: none;
   }
 
-  .main__logo {
-    width: 90px;
-    height: 48px;
-
-    position: absolute;
-    top: 16px;
-    left: 32px;
-  }
-
   .main__infos-wrap {
     display: flex;
     flex-direction: column;
@@ -49,12 +48,15 @@ export const Background = styled.div`
 
   .main__buttons-wrap button {
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid white;
+    border: 1px solid #cdcdcd;
     border-radius: 5px;
     font-size: 24px;
     color: white;
     margin-top: 12px;
-    padding: 4px 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     &:hover {
       background-color: white;
