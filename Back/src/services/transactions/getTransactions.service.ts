@@ -42,7 +42,7 @@ export const getTransactionsService = async (
     };
   });
 
-  return ResponseTransaction;
+  return ResponseTransaction.reverse();
 };
 
 const whereParams = (cashin: boolean, cashout: boolean, account: Accounts) => {
