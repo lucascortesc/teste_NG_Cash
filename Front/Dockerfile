@@ -1,8 +1,8 @@
 FROM node
 
-WORKDIR /app
+WORKDIR /app/Front
 
-COPY "package.json" .
+COPY "package.json" ./
 
 COPY entrypoint.sh /entrypoint.sh
 
