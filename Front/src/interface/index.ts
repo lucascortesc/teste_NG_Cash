@@ -24,6 +24,11 @@ export interface schemaUserProps extends IUserLogin {
   confirmPassword?: number;
 }
 
+export interface schameTransactionProps {
+  username: string;
+  value: number;
+}
+
 export interface ITransaction {
   id: string;
   value: number;

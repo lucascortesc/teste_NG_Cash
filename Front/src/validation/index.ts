@@ -25,3 +25,17 @@ export const userRequestSchama = yup.object().shape({
     return yup.string();
   }),
 });
+
+export const transactionRequestSchama = yup.object().shape({
+  username: yup
+    .string()
+    .required("Usuário obrigatório")
+    .min(3, "Seu username deve conter no mínimo 3 caracteres")
+    .max(16, "Seu username deve conter no máximo 16 caracteres"),
+  value: yup
+    .number()
+    .typeError("Deve ser um número válido")
+    .required("Valor é obrigatório")
+    .positive("Valor não pode ser negativo")
+    .min(1, "Valor não pode ser menor que 1"),
+});

@@ -3,12 +3,21 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../Services/api";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { IChildren, ITransaction } from "../../interface";
+import {
+  IChildren,
+  ITransaction,
+  schameTransactionProps,
+} from "../../interface";
 import { useUser } from "../User";
 
 interface ITransactionsProvider {
   transactions: ITransaction[];
   clearTransactions: () => void;
+  sendTransaction: (
+    data: schameTransactionProps,
+    setOpenModal: (arg: boolean) => void,
+    setIsLoading: (arg: boolean) => void
+  ) => void;
 }
 
 interface IErrorResponse {
@@ -27,7 +36,7 @@ export const TransactionsProvider = ({ children }: IChildren) => {
 
   const navigate = useNavigate();
 
-  const { user } = useUser();
+  const { user, setUser } = useUser();
 
   const clearTransactions = () => {
     setTransactions([]);
@@ -75,8 +84,37 @@ export const TransactionsProvider = ({ children }: IChildren) => {
     setIsLoading(false);
   };
 
+  const sendTransaction = async (
+    data: schameTransactionProps,
+    setOpenModal: (arg: boolean) => void,
+    setIsLoading: (arg: boolean) => void
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await api.post("/transactions", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setTransactions([response.data, ...transactions]);
+
+      const newUser = { ...user };
+      newUser.account.balance = user.account.balance - data.value;
+      setUser(newUser);
+
+      toast.success("Transferência feita com sucesso");
+      setOpenModal(false);
+      setIsLoading(true);
+    } catch (err) {
+      defaultCatch(err, setIsLoading);
+    }
+  };
+
   return (
-    <TransactionsContext.Provider value={{ transactions, clearTransactions }}>
+    <TransactionsContext.Provider
+      value={{ transactions, clearTransactions, sendTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   );

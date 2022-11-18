@@ -1,12 +1,5 @@
 import request from "axios";
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../Services/api";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +16,7 @@ interface IUserProvider {
   user: IUser;
   token: string;
   clearUser: () => void;
+  setUser: (data: IUser) => void;
 }
 
 interface IErrorResponse {
@@ -124,7 +118,7 @@ export const UserProvider = ({ children }: IChildren) => {
   const registerUser = async (
     data: IUserLogin,
     setIsLoading: (arg: boolean) => void,
-    reset: any
+    reset: UseFormReset<schemaUserProps>
   ): Promise<void> => {
     setIsLoading(true);
 
@@ -145,7 +139,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
   return (
     <UserContext.Provider
-      value={{ login, user, token, registerUser, clearUser }}
+      value={{ login, user, token, registerUser, clearUser, setUser }}
     >
       {children}
     </UserContext.Provider>

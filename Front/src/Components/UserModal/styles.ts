@@ -4,7 +4,7 @@ export const Background = styled.div`
   width: 95%;
   max-width: 425px;
   min-height: 300px;
-  padding: 32px 16px;
+  padding: 24px 16px;
   border-radius: 12px;
   background-color: white;
 
@@ -44,7 +44,7 @@ export const Background = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 20px;
     flex-wrap: wrap;
   }
 
@@ -63,6 +63,40 @@ export const Background = styled.div`
 
       color: #6d6d6d;
     }
+  }
+
+  .user__transaction-button {
+    margin-top: 15px;
+  }
+
+  .modal__transaction-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .modal__input-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal__input-wrap > p {
+    font-weight: 500;
+  }
+
+  .modal__buttons-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+  }
+
+  .modal__input {
+    width: 75%;
+    margin: auto auto;
   }
 
   @media screen and (min-width: 480px) {

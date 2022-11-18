@@ -19,8 +19,8 @@ export const Background = styled.div`
 
   .modal {
     width: 95%;
-    max-width: 640px;
-    height: 95%;
+    max-width: 480px;
+    min-height: 280px;
     max-height: 480px;
     background-color: white;
 
@@ -36,6 +36,8 @@ export const Background = styled.div`
       justify-content: space-between;
       align-items: center;
       font-weight: bold;
+
+      margin-bottom: 12px;
 
       p:hover {
         cursor: pointer;
