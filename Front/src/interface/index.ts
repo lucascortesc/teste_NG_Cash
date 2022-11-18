@@ -23,3 +23,11 @@ export interface IUserLogin {
 export interface schemaUserProps extends IUserLogin {
   confirmPassword?: number;
 }
+
+export interface ITransaction {
+  id: string;
+  value: number;
+  debitedAccount: string;
+  creditedAccount: string;
+  createdAt: string;
+}

@@ -1,6 +1,11 @@
 import { IChildren } from "../interface";
-import { UserProvider } from "./user";
+import { TransactionsProvider } from "./Transactions";
+import { UserProvider } from "./User";
 
 export const Providers = ({ children }: IChildren) => {
-  return <UserProvider>{children}</UserProvider>;
+  return (
+    <UserProvider>
+      <TransactionsProvider>{children}</TransactionsProvider>
+    </UserProvider>
+  );
 };

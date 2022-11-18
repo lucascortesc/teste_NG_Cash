@@ -3,9 +3,13 @@ import NGCashLogo from "../../assets/NGCashLogo.png";
 import { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../Providers/User";
+import { useTransactions } from "../../Providers/Transactions";
 
 export const Header = () => {
   const [showLogout, SetShowLogout] = useState<boolean>(false);
+  const { clearUser } = useUser();
+  const { clearTransactions } = useTransactions();
 
   const navigate = useNavigate();
 
@@ -16,7 +20,8 @@ export const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.clear();
+    clearUser();
+    clearTransactions();
     navigate("/");
   };
 

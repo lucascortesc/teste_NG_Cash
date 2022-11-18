@@ -16,6 +16,8 @@ export const Background = styled.div`
   justify-content: space-between;
   position: relative;
 
+  font-size: 14px;
+
   .user__icon {
     width: 90px;
     height: 90px;
@@ -61,5 +63,9 @@ export const Background = styled.div`
 
       color: #6d6d6d;
     }
+  }
+
+  @media screen and (min-width: 480px) {
+    font-size: 16px;
   }
 `;

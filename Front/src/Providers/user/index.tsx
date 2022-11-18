@@ -1,5 +1,12 @@
 import request from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { api } from "../../Services/api";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +22,7 @@ interface IUserProvider {
   ) => void;
   user: IUser;
   token: string;
+  clearUser: () => void;
 }
 
 interface IErrorResponse {
@@ -31,15 +39,41 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const retrieveUser = localStorage.getItem("@user");
-    const retrieveToken = localStorage.getItem("@token");
+  const clearUser = () => {
+    localStorage.clear();
+    setUser({} as IUser);
+  };
 
-    if (retrieveUser) {
-      setUser(JSON.parse(retrieveUser));
+  const getUser = async (responseToken: string) => {
+    try {
+      const retrieveUser = await api.get("/user", {
+        headers: {
+          Authorization: `Bearer ${responseToken}`,
+        },
+      });
+
+      setUser(retrieveUser.data);
+      localStorage.setItem("@user", JSON.stringify(retrieveUser.data));
+    } catch (err) {
+      if (request.isAxiosError(err)) {
+        const typedErr = err.response?.data as IErrorResponse;
+        typedErr
+          ? toast.error(typedErr.error)
+          : toast.error("Algo deu errado, tente novamente");
+      }
+      navigate("/");
+      localStorage.clear();
     }
+  };
+
+  useEffect(() => {
+    const retrieveToken = localStorage.getItem("@token");
     if (retrieveToken) {
       setToken(retrieveToken);
+
+      (async function () {
+        await getUser(retrieveToken);
+      })();
     }
   }, []);
 
@@ -110,7 +144,9 @@ export const UserProvider = ({ children }: IChildren) => {
   };
 
   return (
-    <UserContext.Provider value={{ login, user, token, registerUser }}>
+    <UserContext.Provider
+      value={{ login, user, token, registerUser, clearUser }}
+    >
       {children}
     </UserContext.Provider>
   );

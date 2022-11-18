@@ -15,7 +15,7 @@ export const Container = styled.div<Props>`
   align-items: center;
   justify-content: center;
 
-  position: fixed;
+  position: absolute;
   background-color: ${({ path }) =>
     path === "/" ? "rgba(0, 0, 0, 0)" : "rgb(0, 0, 0)"};
   border-bottom: ${({ path }) =>

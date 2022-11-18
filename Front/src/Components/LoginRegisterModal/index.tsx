@@ -14,7 +14,7 @@ import {
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import { useForm } from "react-hook-form";
-import { useUser } from "../../Providers/user";
+import { useUser } from "../../Providers/User";
 import { schemaUserProps } from "../../interface";
 import Lottie from "react-lottie";
 import { lottieLoadOptions } from "../../Styles";
