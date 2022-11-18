@@ -61,7 +61,7 @@ const filterTransactionsbyDate = (
 ) => {
   if (params.date) {
     return transactions.filter(
-      ({ createdAt }) => createdAt.toLocaleDateString() === params.date
+      ({ createdAt }) => createdAt.toLocaleDateString("pt-BR") === params.date
     );
   }
 
