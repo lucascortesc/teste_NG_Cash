@@ -11,13 +11,11 @@ export const LoginRegister = () => {
     } else {
       setPath("Cadastro");
     }
-  }, []);
+  }, [window.location.pathname]);
 
   return (
     <Background>
-      <LoginRegisterModal title={path}>
-        <p></p>
-      </LoginRegisterModal>
+      <LoginRegisterModal title={path} />
     </Background>
   );
 };

@@ -5,13 +5,13 @@ import { LoginRegister } from "../Pages/LoginRegister";
 
 export const Navigation = () => {
   const PrivateRoutes = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("@token");
     return token ? <Outlet /> : <Navigate to="/login" />;
   };
 
   const AuthenticatedForbidenRoutes = () => {
-    const token = localStorage.getItem("token");
-    return !token ? <Outlet /> : <Navigate to="/main" />;
+    const token = localStorage.getItem("@token");
+    return !token ? <Outlet /> : <Navigate to="/home" />;
   };
 
   return (
@@ -19,6 +19,10 @@ export const Navigation = () => {
       <Route element={<AuthenticatedForbidenRoutes />}>
         <Route path="/login" element={<LoginRegister />} />
         <Route path="/register" element={<LoginRegister />} />
+      </Route>
+
+      <Route element={<PrivateRoutes />}>
+        <Route path="/home" />
       </Route>
 
       <Route path="/" element={<LandingPage />} />

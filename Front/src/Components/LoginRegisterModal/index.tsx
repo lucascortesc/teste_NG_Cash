@@ -1,4 +1,3 @@
-import { IChildren } from "../../interface";
 import { Background } from "./styles";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -15,30 +14,43 @@ import {
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import { useUser } from "../../Providers/user";
+import { schemaUserProps } from "../../interface";
 
-interface Props extends IChildren {
+interface Props {
   title: string;
 }
 
-interface schemaProps {
-  username: string;
-  password: number;
-  confirmPassword?: number;
-}
-
-export const LoginRegisterModal: React.FC<Props> = ({ title, children }) => {
+export const LoginRegisterModal: React.FC<Props> = ({ title }) => {
   const navigate = useNavigate();
   const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { login, registerUser } = useUser();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<schemaProps>({
+    reset,
+  } = useForm<schemaUserProps>({
     resolver: yupResolver(userRequestSchama),
     mode: "onChange",
     context: { title: title },
   });
+
+  const submit = (data: schemaUserProps) => {
+    if (title === "Login") {
+      login(data, setIsLoading);
+    }
+    if (title === "Cadastro") {
+      registerUser(
+        { username: data.username, password: data.password },
+        setIsLoading,
+        reset
+      );
+    }
+  };
 
   return (
     <Background>
@@ -55,10 +67,7 @@ export const LoginRegisterModal: React.FC<Props> = ({ title, children }) => {
           <h1>{title}</h1>
           <p onClick={() => navigate("/")}>x</p>
         </div>
-        <form
-          className="userModal__body"
-          onSubmit={handleSubmit((data) => console.log(data))}
-        >
+        <form className="userModal__body" onSubmit={handleSubmit(submit)}>
           <Input
             placeholder="usuário"
             icon={<AiOutlineUser />}
@@ -89,15 +98,14 @@ export const LoginRegisterModal: React.FC<Props> = ({ title, children }) => {
             <></>
           )}
           <div className="userModal__buttons">
-            <Button onClick={() => navigate("/")} desing="cancel">
+            <Button onClick={() => navigate("/")} desing="cancel" type="button">
               CANCELAR
             </Button>
-            <Button desing="confirm">
+            <Button desing="confirm" type="submit">
               {title === "Login" ? "ENTRAR" : "CADASTRAR"}
             </Button>
           </div>
         </form>
-        {children}
       </motion.div>
     </Background>
   );
