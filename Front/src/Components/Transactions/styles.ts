@@ -24,6 +24,33 @@ export const Background = styled.div`
     flex-wrap: wrap;
   }
 
+  .transaction__filter {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: relative;
+  }
+
+  .filter__wrap-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .transaction__filter > select {
+    width: 150px;
+    font-size: 14px;
+    color: #6d6d6d;
+    font-weight: 600;
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid #6d6d6d;
+  }
+
   .transactions__wrap {
     width: 100%;
     display: flex;
@@ -59,6 +86,16 @@ export const Background = styled.div`
 
   .transactions__empty {
     margin-top: 50px;
+  }
+
+  .react-calendar {
+    position: absolute;
+    left: 16px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 13px 16px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 13px 16px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 13px 16px 5px 0px rgba(0, 0, 0, 0.75);
   }
 
   @media screen and (min-width: 1024px) {

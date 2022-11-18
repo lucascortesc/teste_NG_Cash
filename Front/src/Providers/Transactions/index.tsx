@@ -18,6 +18,8 @@ interface ITransactionsProvider {
     setOpenModal: (arg: boolean) => void,
     setIsLoading: (arg: boolean) => void
   ) => void;
+  getFiltredTransactions: (date: string) => void;
+  getTransactions: (token: string) => void;
 }
 
 interface IErrorResponse {
@@ -47,6 +49,27 @@ export const TransactionsProvider = ({ children }: IChildren) => {
       const retrieveTransactions = await api.get("/transactions", {
         headers: {
           Authorization: `Bearer ${responseToken}`,
+        },
+      });
+
+      setTransactions(retrieveTransactions.data);
+    } catch (err) {
+      if (request.isAxiosError(err)) {
+        const typedErr = err.response?.data as IErrorResponse;
+        typedErr
+          ? toast.error(typedErr.error)
+          : toast.error("Algo deu errado, tente novamente");
+      }
+      navigate("/");
+      localStorage.clear();
+    }
+  };
+
+  const getFiltredTransactions = async (date: string) => {
+    try {
+      const retrieveTransactions = await api.get(`/transactions?date=${date}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -113,7 +136,13 @@ export const TransactionsProvider = ({ children }: IChildren) => {
 
   return (
     <TransactionsContext.Provider
-      value={{ transactions, clearTransactions, sendTransaction }}
+      value={{
+        transactions,
+        clearTransactions,
+        sendTransaction,
+        getFiltredTransactions,
+        getTransactions,
+      }}
     >
       {children}
     </TransactionsContext.Provider>

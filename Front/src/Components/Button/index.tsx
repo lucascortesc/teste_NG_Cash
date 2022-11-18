@@ -5,6 +5,7 @@ interface Props extends IChildren {
   desing: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type: "button" | "submit" | "reset" | undefined;
+  [key: string]: any;
 }
 
 export const Button: React.FC<Props> = ({
@@ -12,9 +13,10 @@ export const Button: React.FC<Props> = ({
   desing,
   onClick,
   type,
+  ...rest
 }) => {
   return (
-    <StyledButton desing={desing} onClick={onClick} type={type}>
+    <StyledButton desing={desing} onClick={onClick} type={type} {...rest}>
       {children}
     </StyledButton>
   );
