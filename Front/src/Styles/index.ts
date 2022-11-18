@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+import cashLoading from "../Lotties/cashLoading.json";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -18,3 +20,12 @@ button {
 }
 
 `;
+
+export const lottieLoadOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: cashLoading,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};

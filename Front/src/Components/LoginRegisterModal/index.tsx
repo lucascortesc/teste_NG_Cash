@@ -16,6 +16,8 @@ import {
 import { useForm } from "react-hook-form";
 import { useUser } from "../../Providers/user";
 import { schemaUserProps } from "../../interface";
+import Lottie from "react-lottie";
+import { lottieLoadOptions } from "../../Styles";
 
 interface Props {
   title: string;
@@ -97,14 +99,27 @@ export const LoginRegisterModal: React.FC<Props> = ({ title }) => {
           ) : (
             <></>
           )}
-          <div className="userModal__buttons">
-            <Button onClick={() => navigate("/")} desing="cancel" type="button">
-              CANCELAR
-            </Button>
-            <Button desing="confirm" type="submit">
-              {title === "Login" ? "ENTRAR" : "CADASTRAR"}
-            </Button>
-          </div>
+          {!isLoading ? (
+            <div className="userModal__buttons">
+              <Button
+                onClick={() => navigate("/")}
+                desing="cancel"
+                type="button"
+              >
+                CANCELAR
+              </Button>
+              <Button desing="confirm" type="submit">
+                {title === "Login" ? "ENTRAR" : "CADASTRAR"}
+              </Button>
+            </div>
+          ) : (
+            <div className="userModal__lottie">
+              <Lottie
+                options={lottieLoadOptions}
+                isClickToPauseDisabled={true}
+              />
+            </div>
+          )}
         </form>
       </motion.div>
     </Background>

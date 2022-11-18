@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface Props {
+  path: string;
+}
+
+export const Container = styled.div<Props>`
   background-color: black;
   width: 100%;
   height: 96px;
@@ -12,11 +16,18 @@ export const Container = styled.div`
   justify-content: center;
 
   position: fixed;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${({ path }) =>
+    path === "/" ? "rgba(0, 0, 0, 0)" : "rgb(0, 0, 0)"};
+  border-bottom: ${({ path }) =>
+    path === "/home" ? "1px solid white" : "none"};
 
   .header__widthLimiter {
     width: 100%;
     max-width: 1600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .header__logo {

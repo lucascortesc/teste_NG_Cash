@@ -5,7 +5,7 @@ export const userRequestSchama = yup.object().shape({
     .string()
     .required("Usuário obrigatório")
     .min(3, "Seu username deve conter no mínimo 3 caracteres")
-    .max(128, "Seu username deve conter no máximo 128 caracteres"),
+    .max(16, "Seu username deve conter no máximo 16 caracteres"),
   password: yup
     .string()
     .required("Senha obrigatória")

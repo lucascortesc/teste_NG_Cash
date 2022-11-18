@@ -77,6 +77,15 @@ export const Background = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    height: 70px;
+
+    button {
+      height: 36px;
+    }
+  }
+
+  .userModal__lottie {
+    width: 70px;
   }
 
   @media screen and (min-width: 420px) {

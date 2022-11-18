@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Outlet, Navigate } from "react-router-dom";
+import { Home } from "../Pages/Home";
 import { LandingPage } from "../Pages/LandingPage";
 import { LoginRegister } from "../Pages/LoginRegister";
 
@@ -22,7 +23,7 @@ export const Navigation = () => {
       </Route>
 
       <Route element={<PrivateRoutes />}>
-        <Route path="/home" />
+        <Route path="/home" element={<Home />} />
       </Route>
 
       <Route path="/" element={<LandingPage />} />
