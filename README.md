@@ -3,9 +3,17 @@
 ## Doc API
 https://ng-cash-api-docs-1vfef4sgy-lucascortesc.vercel.app/
 
+## Instale as dependências
+
+Tanto no Front quanto no Back, rode o comando yarn para instalar as dependências
+
+>
+> yarn
+>
+
 ## Rodando com docker
 
-Primeiramente, no docker-compose.yml, altere as variáveis de ambinte com os seus dados do postgress
+Primeiramente, no docker-compose.yml, altere as variáveis de ambiente com os seus dados do postgress
 
 >
 >    api:
@@ -34,7 +42,7 @@ Utilize o comando a seguir para buildar e rodar os containers
 > docker compose up --build
 >
 
-Caso tenha algum erro no build em relação ao arquivo entrypoint.sh, tente alterar o End of Line Sequence do mesmo (LF ou CRLF)
+Caso tenha algum erro no build em relação ao arquivo entrypoint.sh (exec /entrypoint.sh: no such file or directory), tente alterar o End of Line Sequence do mesmo (de CRLF para LF)
 
 Espera a confirmação de que o front e a api estejam rodando
 
@@ -53,12 +61,6 @@ Com os contâiners ativos, entre na pasta Back e rode o comando a seguir para ro
 >
 
 ## Rodando sem docker
-
-Primeiramente, entre nas pastas Front e Back e rode o yarn para installar as dependências
-
->
-> yarn
->
 
 ### Back
 
