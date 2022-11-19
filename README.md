@@ -31,7 +31,7 @@ Primeiramente, no docker-compose.yml, altere as variáveis de ambinte com os seu
 Utilize o comando a seguir para buildar e rodar os containers
 
 >
-> Docker compose up --build
+> docker compose up --build
 >
 
 Caso tenha algum erro no build em relação ao arquivo entrypoint.sh, tente alterar o End of Line Sequence do mesmo (LF ou CRLF)
