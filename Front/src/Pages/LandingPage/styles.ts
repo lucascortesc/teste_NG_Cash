@@ -5,6 +5,9 @@ export const WrapLimiter = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  background-image: url(${background});
+  background-size: cover;
 `;
 
 export const Background = styled.div`
@@ -16,8 +19,6 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1600px;
   height: 100vh;
-  background-image: url(${background});
-  background-size: cover;
 
   display: flex;
   align-items: center;
